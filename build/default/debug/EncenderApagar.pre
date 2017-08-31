@@ -2191,6 +2191,7 @@ RCSTAbits.SPEN = 1;
 
 # 12 "EncenderApagar.c"
 int estado_boton = 0;
+int cont = 0;
 
 void main(void) {
 iniciar_uart();
@@ -2201,24 +2202,29 @@ PORTC = 0;
 
 while (1){
 
-if (PORTCbits.RC0 == 0){
-PORTB = 0B00000000;
-printf("Los leds estan apagados\n");
-}
+
 
 if (PORTCbits.RC0 == 1){
 estado_boton++;
-}
+
 
 if (estado_boton == 1){
 PORTB = 0B11111111;
 printf("Los leds estan encendidos\n");
+
 }
+}
+if (PORTCbits.RC0 == 0){
+estado_boton--;
+
 
 if (estado_boton == 0){
 PORTB = 0B00000000;
-estado_boton = 0;
+
 }
 }
+}
+
+# 60
 }
 

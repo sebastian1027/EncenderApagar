@@ -1620,96 +1620,96 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;EncenderApagar.c: 12: int estado_boton = 0;
+"13
+[v _cont `i ~T0 @X0 1 e ]
+[i _cont
+-> 0 `i
+]
+[; ;EncenderApagar.c: 13: int cont = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"14
+"15
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;EncenderApagar.c: 14: void main(void) {
+[; ;EncenderApagar.c: 15: void main(void) {
 [e :U _main ]
 [f ]
-[; ;EncenderApagar.c: 15: iniciar_uart();
-"15
-[e ( _iniciar_uart ..  ]
-[; ;EncenderApagar.c: 16: TRISB = 0b00000000;
+[; ;EncenderApagar.c: 16: iniciar_uart();
 "16
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 17: PORTB = 0;
+[e ( _iniciar_uart ..  ]
+[; ;EncenderApagar.c: 17: TRISB = 0b00000000;
 "17
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 18: TRISC = 1;
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 18: PORTB = 0;
 "18
-[e = _TRISC -> -> 1 `i `uc ]
-[; ;EncenderApagar.c: 19: PORTC = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 19: TRISC = 1;
 "19
+[e = _TRISC -> -> 1 `i `uc ]
+[; ;EncenderApagar.c: 20: PORTC = 0;
+"20
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 21: while (1){
-"21
+[; ;EncenderApagar.c: 22: while (1){
+"22
 [e :U 146 ]
 {
-[; ;EncenderApagar.c: 23: if (PORTCbits.RC0 == 0){
-"23
-[e $ ! == -> . . _PORTCbits 0 0 `i -> 0 `i 148  ]
-{
-[; ;EncenderApagar.c: 24: PORTB = 0B00000000;
-"24
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 25: printf("Los leds estan apagados\n");
-"25
-[e ( _printf :s 1C ]
+[; ;EncenderApagar.c: 26: if (PORTCbits.RC0 == 1){
 "26
-}
-[e :U 148 ]
-[; ;EncenderApagar.c: 26: }
-[; ;EncenderApagar.c: 28: if (PORTCbits.RC0 == 1){
-"28
-[e $ ! == -> . . _PORTCbits 0 0 `i -> 1 `i 149  ]
+[e $ ! == -> . . _PORTCbits 0 0 `i -> 1 `i 148  ]
 {
-[; ;EncenderApagar.c: 29: estado_boton++;
-"29
+[; ;EncenderApagar.c: 27: estado_boton++;
+"27
 [e ++ _estado_boton -> 1 `i ]
+[; ;EncenderApagar.c: 30: if (estado_boton == 1){
 "30
+[e $ ! == _estado_boton -> 1 `i 149  ]
+{
+[; ;EncenderApagar.c: 31: PORTB = 0B11111111;
+"31
+[e = _PORTB -> -> 255 `i `uc ]
+[; ;EncenderApagar.c: 32: printf("Los leds estan encendidos\n");
+"32
+[e ( _printf :s 1C ]
+"34
 }
 [e :U 149 ]
-[; ;EncenderApagar.c: 30: }
-[; ;EncenderApagar.c: 32: if (estado_boton == 1){
-"32
-[e $ ! == _estado_boton -> 1 `i 150  ]
-{
-[; ;EncenderApagar.c: 33: PORTB = 0B11111111;
-"33
-[e = _PORTB -> -> 255 `i `uc ]
-[; ;EncenderApagar.c: 34: printf("Los leds estan encendidos\n");
-"34
-[e ( _printf :s 2C ]
 "35
 }
-[e :U 150 ]
+[e :U 148 ]
+[; ;EncenderApagar.c: 34: }
 [; ;EncenderApagar.c: 35: }
-[; ;EncenderApagar.c: 37: if (estado_boton == 0){
+[; ;EncenderApagar.c: 36: if (PORTCbits.RC0 == 0){
+"36
+[e $ ! == -> . . _PORTCbits 0 0 `i -> 0 `i 150  ]
+{
+[; ;EncenderApagar.c: 37: estado_boton--;
 "37
+[e -- _estado_boton -> 1 `i ]
+[; ;EncenderApagar.c: 40: if (estado_boton == 0){
+"40
 [e $ ! == _estado_boton -> 0 `i 151  ]
 {
-[; ;EncenderApagar.c: 38: PORTB = 0B00000000;
-"38
+[; ;EncenderApagar.c: 41: PORTB = 0B00000000;
+"41
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 39: estado_boton = 0;
-"39
-[e = _estado_boton -> 0 `i ]
-"40
+"43
 }
 [e :U 151 ]
-"41
+"44
+}
+[e :U 150 ]
+"45
 }
 [e :U 145 ]
-"21
+"22
 [e $U 146  ]
 [e :U 147 ]
-[; ;EncenderApagar.c: 40: }
-[; ;EncenderApagar.c: 41: }
-[; ;EncenderApagar.c: 42: }
-"42
+[; ;EncenderApagar.c: 43: }
+[; ;EncenderApagar.c: 44: }
+[; ;EncenderApagar.c: 45: }
+[; ;EncenderApagar.c: 60: }
+"60
 [e :UE 144 ]
 }
 [p f _printf 8388608 ]
-[a 2C 76 111 115 32 108 101 100 115 32 101 115 116 97 110 32 101 110 99 101 110 100 105 100 111 115 10 0 ]
-[a 1C 76 111 115 32 108 101 100 115 32 101 115 116 97 110 32 97 112 97 103 97 100 111 115 10 0 ]
+[a 1C 76 111 115 32 108 101 100 115 32 101 115 116 97 110 32 101 110 99 101 110 100 105 100 111 115 10 0 ]
+

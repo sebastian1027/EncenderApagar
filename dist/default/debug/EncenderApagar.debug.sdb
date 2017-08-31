@@ -17,7 +17,7 @@
 [v _putch putch `(v  1 e 1 0 ]
 "34
 [v _iniciar_uart iniciar_uart `(v  1 e 1 0 ]
-"14 E:\DigitalesII\EncenderApagar\EncenderApagar.c
+"15 E:\DigitalesII\EncenderApagar\EncenderApagar.c
 [v _main main `(v  1 e 1 0 ]
 "226 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -95,10 +95,10 @@
 [v _TXSTAbits TXSTAbits `VES55  1 e 1 @152 ]
 "12 E:\DigitalesII\EncenderApagar\EncenderApagar.c
 [v _estado_boton estado_boton `i  1 e 2 0 ]
-"14
+"15
 [v _main main `(v  1 e 1 0 ]
 {
-"42
+"60
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]

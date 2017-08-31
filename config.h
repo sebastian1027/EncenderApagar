@@ -6,8 +6,9 @@
  * Revision history: 
  */
 
-//
-/* CONFIG1
+#define _XTAL_FREQ 4000000
+
+// CONFIG1
 #pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
 #pragma config WDTE = ON        // Watchdog Timer Enable bit (WDT enabled)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
@@ -22,10 +23,10 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
-*/
-#define _XTAL_FREQ 4000000
 
-void putch(unsigned char dato){
+
+
+/*void putch(unsigned char dato){
     while (! PIR1bits.TXIF)
         continue;
     TXREG = dato;
@@ -35,3 +36,4 @@ void iniciar_uart(void){ //funcion para habilitar USART
     TXSTAbits.TXEN = 1;
     RCSTAbits.SPEN = 1; 
 }
+*/
