@@ -2177,54 +2177,53 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 28 "config.h"
-void putch(unsigned char dato){
-while (! PIR1bits.TXIF)
-continue;
-TXREG = dato;
-}
 
-void iniciar_uart(void){
-TXSTAbits.TXEN = 1;
-RCSTAbits.SPEN = 1;
-}
+# 12 "config.h"
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = ON
+#pragma config PWRTE = OFF
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
 
 # 12 "EncenderApagar.c"
 int estado_boton = 0;
 int cont = 0;
 
 void main(void) {
-iniciar_uart();
+
 TRISB = 0b00000000;
 PORTB = 0;
 TRISC = 1;
 PORTC = 0;
 
+
 while (1){
 
-
+while (estado_boton == 0){
+PORTB = 0b00000000;
 
 if (PORTCbits.RC0 == 1){
-estado_boton++;
+estado_boton = 1;
+}
+}
+while (estado_boton == 1){
+PORTB = 0b11111111;
 
-
-if (estado_boton == 1){
-PORTB = 0B11111111;
-printf("Los leds estan encendidos\n");
+if (PORTCbits.RC0 == 1){
+estado_boton = 0;
 
 }
 }
-if (PORTCbits.RC0 == 0){
-estado_boton--;
-
-
-if (estado_boton == 0){
-PORTB = 0B00000000;
 
 }
-}
-}
-
-# 60
 }
 

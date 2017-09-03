@@ -1,15 +1,11 @@
 ### HEXMate logfile and output summary ###
 ### Memory Usage ###
  Unused memory ranges:
-  6h - F9Fh
-  1000h - 3FFFh
-  4000h - 400Dh
-  4012h - 403Fh
+  6h - F7Bh
   
  dist/default/production\EncenderApagar.production.hex ranges:
   0h - 5h
-  FA0h - FFFh
-  400Eh - 4011h
+  F7Ch - FFFh
   
 ### Hex Memory Map ###
  Legend:
@@ -24,6 +20,6 @@
   X = Find & delete opcode
   1 = dist/default/production\EncenderApagar.production.hex
 00000000: 111111----------------------------------------------------------
-00000F80: --------------------------------11111111111111111111111111111111
+00000F40: ------------------------------------------------------------1111
+00000F80: 1111111111111111111111111111111111111111111111111111111111111111
 00000FC0: 1111111111111111111111111111111111111111111111111111111111111111
-00004000: --------------1111----------------------------------------------

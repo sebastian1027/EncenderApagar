@@ -1,6 +1,47 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"541 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic16f887.h
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"540
+[u S18 `S19 1 ]
+[n S18 . . ]
+"551
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1131
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"2560
+[s S99 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S99 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"2570
+[s S100 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S100 . TXD8 . nTX8 ]
+"2575
+[s S101 :6 `uc 1 :1 `uc 1 ]
+[n S101 . . TX8_9 ]
+"2559
+[u S98 `S99 1 `S100 1 `S101 1 ]
+[n S98 . . . . ]
+"2580
+[v _TXSTAbits `VS98 ~T0 @X0 0 e@152 ]
+"1042
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"1052
+[s S38 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S38 . RCD8 . RC9 ]
+"1057
+[s S39 :6 `uc 1 :1 `uc 1 ]
+[n S39 . . nRC8 ]
+"1061
+[s S40 :6 `uc 1 :1 `uc 1 ]
+[n S40 . . RC8_9 ]
+"1041
+[u S36 `S37 1 `S38 1 `S39 1 `S40 1 ]
+[n S36 . . . . . ]
+"1066
+[v _RCSTAbits `VS36 ~T0 @X0 0 e@24 ]
 [p mainexit ]
-"1476 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic16f887.h
+"1476
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "226
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
@@ -1530,125 +1571,161 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-"12 config.h
-[p x FOSC=INTRC_NOCLKOUT ]
-"13
-[p x WDTE=ON ]
-"14
-[p x PWRTE=OFF ]
-"15
-[p x MCLRE=ON ]
-"16
-[p x CP=OFF ]
-"17
-[p x CPD=OFF ]
-"18
-[p x BOREN=OFF ]
-"19
-[p x IESO=OFF ]
-"20
-[p x FCMEN=OFF ]
-"21
-[p x LVP=OFF ]
-"24
-[p x BOR4V=BOR40V ]
-"25
-[p x WRT=OFF ]
-"12 EncenderApagar.c
+"30 config.h
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;config.h: 30: void putch(unsigned char dato){
+[e :U _putch ]
+[v _dato `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;config.h: 31: while (! PIR1bits.TXIF)
+"31
+[e $U 140  ]
+[e :U 141 ]
+[; ;config.h: 32: continue;
+"32
+[e $U 140  ]
+[e :U 140 ]
+"31
+[e $ ! != -> . . _PIR1bits 0 4 `i -> -> -> 0 `i `Vuc `i 141  ]
+[e :U 142 ]
+[; ;config.h: 33: TXREG = dato;
+"33
+[e = _TXREG _dato ]
+[; ;config.h: 34: }
+"34
+[e :UE 139 ]
+}
+"36
+[v _iniciar_uart `(v ~T0 @X0 1 ef ]
+{
+[; ;config.h: 36: void iniciar_uart(void){
+[e :U _iniciar_uart ]
+[f ]
+[; ;config.h: 37: TXSTAbits.TXEN = 1;
+"37
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;config.h: 38: RCSTAbits.SPEN = 1;
+"38
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;config.h: 39: }
+"39
+[e :UE 143 ]
+}
+"13 EncenderApagar.c
 [v _estado_boton `i ~T0 @X0 1 e ]
 [i _estado_boton
 -> 0 `i
 ]
-[; ;EncenderApagar.c: 12: int estado_boton = 0;
-"13
-[v _cont `i ~T0 @X0 1 e ]
-[i _cont
+[; ;EncenderApagar.c: 13: int estado_boton = 0;
+"14
+[v _pulso `i ~T0 @X0 1 e ]
+[i _pulso
 -> 0 `i
 ]
-[; ;EncenderApagar.c: 13: int cont = 0;
-[v $root$_main `(v ~T0 @X0 0 e ]
+[; ;EncenderApagar.c: 14: int pulso = 0;
 "15
+[v _bandera `i ~T0 @X0 1 e ]
+[i _bandera
+-> 0 `i
+]
+[; ;EncenderApagar.c: 15: int bandera = 0;
+[v $root$_main `(v ~T0 @X0 0 e ]
+"17
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;EncenderApagar.c: 15: void main(void) {
+[; ;EncenderApagar.c: 17: void main(void) {
 [e :U _main ]
 [f ]
-[; ;EncenderApagar.c: 17: TRISB = 0b00000000;
-"17
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 18: PORTB = 0;
+[; ;EncenderApagar.c: 18: iniciar_uart();
 "18
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 19: TRISC = 1;
+[e ( _iniciar_uart ..  ]
+[; ;EncenderApagar.c: 19: TRISB = 0b00000000;
 "19
-[e = _TRISC -> -> 1 `i `uc ]
-[; ;EncenderApagar.c: 20: PORTC = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 20: PORTB = 0;
 "20
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 23: while (1){
-"23
-[e :U 141 ]
-{
-[; ;EncenderApagar.c: 25: if (estado_boton == 0){
-"25
-[e $ ! == _estado_boton -> 0 `i 143  ]
-{
-[; ;EncenderApagar.c: 26: PORTB = 0b00000000;
-"26
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 27: while (PORTCbits.RC0 == 1){
-"27
-[e $U 144  ]
-[e :U 145 ]
-{
-[; ;EncenderApagar.c: 28: estado_boton = 1;
-"28
-[e = _estado_boton -> 1 `i ]
-"30
-}
-[e :U 144 ]
-"27
-[e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 145  ]
+[; ;EncenderApagar.c: 21: TRISC = 1;
+"21
+[e = _TRISC -> -> 1 `i `uc ]
+[; ;EncenderApagar.c: 22: PORTC = 0;
+"22
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 26: while (1){
+"26
 [e :U 146 ]
+{
+[; ;EncenderApagar.c: 28: if (PORTCbits.RC0 == 1 && bandera == 0){
+"28
+[e $ ! && == -> . . _PORTCbits 0 0 `i -> 1 `i == _bandera -> 0 `i 148  ]
+{
+[; ;EncenderApagar.c: 29: bandera = 1;
+"29
+[e = _bandera -> 1 `i ]
+[; ;EncenderApagar.c: 30: while(PORTCbits.RC0 == 1){}
+"30
+[e $U 149  ]
+[e :U 150 ]
+{
+}
+[e :U 149 ]
+[e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 150  ]
+[e :U 151 ]
 "31
 }
-[e :U 143 ]
-[; ;EncenderApagar.c: 30: }
+[e :U 148 ]
 [; ;EncenderApagar.c: 31: }
-[; ;EncenderApagar.c: 32: if (estado_boton == 1){
+[; ;EncenderApagar.c: 32: if (PORTCbits.RC0 == 1 && bandera == 1){
 "32
-[e $ ! == _estado_boton -> 1 `i 147  ]
+[e $ ! && == -> . . _PORTCbits 0 0 `i -> 1 `i == _bandera -> 1 `i 152  ]
 {
-[; ;EncenderApagar.c: 34: PORTB = 0b11111111;
+[; ;EncenderApagar.c: 33: bandera = 0;
+"33
+[e = _bandera -> 0 `i ]
+[; ;EncenderApagar.c: 34: while(PORTCbits.RC0 == 1){}
 "34
-[e = _PORTB -> -> 255 `i `uc ]
-[; ;EncenderApagar.c: 35: while (PORTCbits.RC0 == 1){
-"35
-[e $U 148  ]
-[e :U 149 ]
+[e $U 153  ]
+[e :U 154 ]
 {
-[; ;EncenderApagar.c: 36: estado_boton = 0;
-"36
-[e = _estado_boton -> 0 `i ]
+}
+[e :U 153 ]
+[e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 154  ]
+[e :U 155 ]
+"35
+}
+[e :U 152 ]
+[; ;EncenderApagar.c: 35: }
+[; ;EncenderApagar.c: 37: if ( bandera == 1){
+"37
+[e $ ! == _bandera -> 1 `i 156  ]
+{
+[; ;EncenderApagar.c: 38: PORTB = 0b11111111;
+"38
+[e = _PORTB -> -> 255 `i `uc ]
 "39
 }
-[e :U 148 ]
-"35
-[e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 149  ]
-[e :U 150 ]
+[; ;EncenderApagar.c: 39: }
+[e $U 157  ]
 "40
-}
-[e :U 147 ]
+[e :U 156 ]
+[; ;EncenderApagar.c: 40: else{
+{
+[; ;EncenderApagar.c: 41: PORTB = 0b00000000;
+"41
+[e = _PORTB -> -> 0 `i `uc ]
 "42
 }
-[e :U 140 ]
-"23
-[e $U 141  ]
-[e :U 142 ]
-[; ;EncenderApagar.c: 39: }
-[; ;EncenderApagar.c: 40: }
+[e :U 157 ]
+"44
+}
+[e :U 145 ]
+"26
+[e $U 146  ]
+[e :U 147 ]
 [; ;EncenderApagar.c: 42: }
-[; ;EncenderApagar.c: 82: }
-"82
-[e :UE 139 ]
+[; ;EncenderApagar.c: 44: }
+[; ;EncenderApagar.c: 45: }
+"45
+[e :UE 144 ]
 }
