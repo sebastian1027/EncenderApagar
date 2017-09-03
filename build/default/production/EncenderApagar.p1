@@ -57,6 +57,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S9 . . ]
 "305
 [v _PORTCbits `VS9 ~T0 @X0 0 e@7 ]
+"195 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1612,59 +1614,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 "39
 [e :UE 143 ]
 }
-"13 EncenderApagar.c
+"14 EncenderApagar.c
 [v _estado_boton `i ~T0 @X0 1 e ]
 [i _estado_boton
 -> 0 `i
 ]
-[; ;EncenderApagar.c: 13: int estado_boton = 0;
-"14
+[; ;EncenderApagar.c: 14: int estado_boton = 0;
+"15
 [v _pulso `i ~T0 @X0 1 e ]
 [i _pulso
 -> 0 `i
 ]
-[; ;EncenderApagar.c: 14: int pulso = 0;
-"15
+[; ;EncenderApagar.c: 15: int pulso = 0;
+"16
 [v _bandera `i ~T0 @X0 1 e ]
 [i _bandera
 -> 0 `i
 ]
-[; ;EncenderApagar.c: 15: int bandera = 0;
+[; ;EncenderApagar.c: 16: int bandera = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"17
+"19
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;EncenderApagar.c: 17: void main(void) {
+[; ;EncenderApagar.c: 19: void main(void) {
 [e :U _main ]
 [f ]
-[; ;EncenderApagar.c: 18: iniciar_uart();
-"18
-[e ( _iniciar_uart ..  ]
-[; ;EncenderApagar.c: 19: TRISB = 0b00000000;
-"19
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 20: PORTB = 0;
+[; ;EncenderApagar.c: 20: iniciar_uart();
 "20
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 21: TRISC = 1;
+[e ( _iniciar_uart ..  ]
+[; ;EncenderApagar.c: 21: TRISB = 0b00000000;
 "21
-[e = _TRISC -> -> 1 `i `uc ]
-[; ;EncenderApagar.c: 22: PORTC = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 22: PORTB = 0;
 "22
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 23: TRISC = 1;
+"23
+[e = _TRISC -> -> 1 `i `uc ]
+[; ;EncenderApagar.c: 24: PORTC = 0;
+"24
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;EncenderApagar.c: 26: while (1){
-"26
+[; ;EncenderApagar.c: 28: while (1){
+"28
 [e :U 146 ]
 {
-[; ;EncenderApagar.c: 28: if (PORTCbits.RC0 == 1 && bandera == 0){
-"28
+[; ;EncenderApagar.c: 30: if (PORTCbits.RC0 == 1 && bandera == 0){
+"30
 [e $ ! && == -> . . _PORTCbits 0 0 `i -> 1 `i == _bandera -> 0 `i 148  ]
 {
-[; ;EncenderApagar.c: 29: bandera = 1;
-"29
+[; ;EncenderApagar.c: 31: bandera = 1;
+"31
 [e = _bandera -> 1 `i ]
-[; ;EncenderApagar.c: 30: while(PORTCbits.RC0 == 1){}
-"30
+[; ;EncenderApagar.c: 32: while(PORTCbits.RC0 == 1){}
+"32
 [e $U 149  ]
 [e :U 150 ]
 {
@@ -1672,19 +1674,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 149 ]
 [e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 150  ]
 [e :U 151 ]
-"31
+"33
 }
 [e :U 148 ]
-[; ;EncenderApagar.c: 31: }
-[; ;EncenderApagar.c: 32: if (PORTCbits.RC0 == 1 && bandera == 1){
-"32
+[; ;EncenderApagar.c: 33: }
+[; ;EncenderApagar.c: 34: if (PORTCbits.RC0 == 1 && bandera == 1){
+"34
 [e $ ! && == -> . . _PORTCbits 0 0 `i -> 1 `i == _bandera -> 1 `i 152  ]
 {
-[; ;EncenderApagar.c: 33: bandera = 0;
-"33
+[; ;EncenderApagar.c: 35: bandera = 0;
+"35
 [e = _bandera -> 0 `i ]
-[; ;EncenderApagar.c: 34: while(PORTCbits.RC0 == 1){}
-"34
+[; ;EncenderApagar.c: 36: while(PORTCbits.RC0 == 1){}
+"36
 [e $U 153  ]
 [e :U 154 ]
 {
@@ -1692,40 +1694,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 153 ]
 [e $ == -> . . _PORTCbits 0 0 `i -> 1 `i 154  ]
 [e :U 155 ]
-"35
+"37
 }
 [e :U 152 ]
-[; ;EncenderApagar.c: 35: }
-[; ;EncenderApagar.c: 37: if ( bandera == 1){
-"37
+[; ;EncenderApagar.c: 37: }
+[; ;EncenderApagar.c: 39: if ( bandera == 1){
+"39
 [e $ ! == _bandera -> 1 `i 156  ]
 {
-[; ;EncenderApagar.c: 38: PORTB = 0b11111111;
-"38
-[e = _PORTB -> -> 255 `i `uc ]
-"39
-}
-[; ;EncenderApagar.c: 39: }
-[e $U 157  ]
+[; ;EncenderApagar.c: 40: PORTB = 0b11111111;
 "40
-[e :U 156 ]
-[; ;EncenderApagar.c: 40: else{
-{
-[; ;EncenderApagar.c: 41: PORTB = 0b00000000;
+[e = _PORTB -> -> 255 `i `uc ]
+[; ;EncenderApagar.c: 41: printf("Leds encendidos.\n");
 "41
-[e = _PORTB -> -> 0 `i `uc ]
+[e ( _printf :s 1C ]
 "42
 }
-[e :U 157 ]
+[; ;EncenderApagar.c: 42: }
+[e $U 157  ]
+"43
+[e :U 156 ]
+[; ;EncenderApagar.c: 43: else{
+{
+[; ;EncenderApagar.c: 44: PORTB = 0b00000000;
 "44
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;EncenderApagar.c: 45: printf("Leds apagados.\n");
+"45
+[e ( _printf :s 2C ]
+"46
+}
+[e :U 157 ]
+"48
 }
 [e :U 145 ]
-"26
+"28
 [e $U 146  ]
 [e :U 147 ]
-[; ;EncenderApagar.c: 42: }
-[; ;EncenderApagar.c: 44: }
-[; ;EncenderApagar.c: 45: }
-"45
+[; ;EncenderApagar.c: 46: }
+[; ;EncenderApagar.c: 48: }
+[; ;EncenderApagar.c: 49: }
+"49
 [e :UE 144 ]
 }
+[p f _printf 8388608 ]
+[a 1C 76 101 100 115 32 101 110 99 101 110 100 105 100 111 115 46 10 0 ]
+[a 2C 76 101 100 115 32 97 112 97 103 97 100 111 115 46 10 0 ]

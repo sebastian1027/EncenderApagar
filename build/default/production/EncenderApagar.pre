@@ -2189,10 +2189,11 @@ TXSTAbits.TXEN = 1;
 RCSTAbits.SPEN = 1;
 }
 
-# 13 "EncenderApagar.c"
+# 14 "EncenderApagar.c"
 int estado_boton = 0;
 int pulso = 0;
 int bandera = 0;
+
 
 void main(void) {
 iniciar_uart();
@@ -2216,9 +2217,11 @@ while(PORTCbits.RC0 == 1){}
 
 if ( bandera == 1){
 PORTB = 0b11111111;
+printf("Leds encendidos.\n");
 }
 else{
 PORTB = 0b00000000;
+printf("Leds apagados.\n");
 }
 
 }

@@ -3,6 +3,8 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 6 ]
+"464 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\ftadd.c
@@ -11,9 +13,11 @@
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"36 E:\DigitalesII\EncenderApagar\config.h
+"30 E:\DigitalesII\EncenderApagar\config.h
+[v _putch putch `(v  1 e 1 0 ]
+"36
 [v _iniciar_uart iniciar_uart `(v  1 e 1 0 ]
-"17 E:\DigitalesII\EncenderApagar\EncenderApagar.c
+"19 E:\DigitalesII\EncenderApagar\EncenderApagar.c
 [v _main main `(v  1 e 1 0 ]
 "226 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -89,14 +93,36 @@
 ]
 [u S55 . 1 `S39 1 . 1 0 `S48 1 . 1 0 `S52 1 . 1 0 ]
 [v _TXSTAbits TXSTAbits `VES55  1 e 1 @152 ]
-"15 E:\DigitalesII\EncenderApagar\EncenderApagar.c
+"16 E:\DigitalesII\EncenderApagar\EncenderApagar.c
 [v _bandera bandera `i  1 e 2 0 ]
-"17
+"19
 [v _main main `(v  1 e 1 0 ]
 {
-"45
+"49
 } 0
-"36 E:\DigitalesII\EncenderApagar\config.h
+"464 C:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+[v printf@f f `*.24DCuc  1 a 1 wreg ]
+"499
+[v printf@c c `c  1 a 1 3 ]
+"466
+[v printf@ap ap `[1]*.1v  1 a 1 2 ]
+"464
+[v printf@f f `*.24DCuc  1 a 1 wreg ]
+"533
+[v printf@f f `*.24DCuc  1 a 1 4 ]
+"1541
+} 0
+"30 E:\DigitalesII\EncenderApagar\config.h
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@dato dato `uc  1 a 1 wreg ]
+[v putch@dato dato `uc  1 a 1 wreg ]
+[v putch@dato dato `uc  1 a 1 0 ]
+"34
+} 0
+"36
 [v _iniciar_uart iniciar_uart `(v  1 e 1 0 ]
 {
 "39
